@@ -19,6 +19,15 @@ function Home() {
       .then(response => response.json())
       .then(data => setPortfolio(data))
       .catch(error => console.error('Error loading portfolio:', error));
+    if (storedPortfolio) {
+      setPortfolio(JSON.parse(storedPortfolio));
+    } else {
+      // Load default portfolio from JSON
+      fetch('/portfolio/images.json')
+        .then(response => response.json())
+        .then(data => setPortfolio(data))
+        .catch(error => console.error('Error loading portfolio:', error));
+    }
   }, []);
 
   const particlesInit = async (engine) => {
@@ -208,6 +217,7 @@ function Home() {
         </motion.p>
         <motion.div
           className="steps-grid"
+        <motion.ol
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
@@ -233,6 +243,11 @@ function Home() {
             <p>Finalize com top coat para brilho e durabilidade.</p>
           </div>
         </motion.div>
+          <li>Limpe as unhas.</li>
+          <li>Aplique a base.</li>
+          <li>Pinte com a cor desejada.</li>
+          <li>Finalize com top coat.</li>
+        </motion.ol>
       </motion.section>
     </div>
   );

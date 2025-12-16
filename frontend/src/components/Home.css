@@ -197,6 +197,12 @@
   transform: scale(1.1);
 }
 
+}
+
+.carousel-item:hover img {
+  transform: scale(1.1);
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -263,4 +269,32 @@
 .step p {
   color: #555;
   line-height: 1.6;
+}
+
+.how-to p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+.how-to ol {
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.8;
+}
+
+.how-to li {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.how-to li::before {
+  content: '💅';
+  position: absolute;
+  left: 0;
+  color: #ab47bc;
 }
