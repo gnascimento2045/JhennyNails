@@ -1,0 +1,145 @@
+.home {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.top-bar h1 {
+  margin: 0;
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.whatsapp-btn:hover {
+  background: #128c7e;
+}
+
+.hero {
+  padding: 100px 20px 50px;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background: #ff5252;
+}
+
+.portfolio {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.portfolio h3 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.carousel-item {
+  min-width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.carousel-item h4 {
+  margin: 15px 0 10px;
+}
+
+.carousel-item button {
+  background: #feca57;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.carousel-item button:hover {
+  background: #ffb74d;
+}
+
+.how-to {
+  padding: 50px 20px;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.how-to h3 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.how-to ol {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1em;
+}
+
+.how-to li {
+  margin-bottom: 10px;
+}
