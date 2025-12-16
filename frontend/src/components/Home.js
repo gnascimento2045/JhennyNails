@@ -211,16 +211,33 @@ function Home() {
         >
           Instruções simples para cuidar das suas unhas em casa.
         </motion.p>
-        <motion.ol
+        <motion.div
+          className="steps-grid"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          <li>Limpe as unhas.</li>
-          <li>Aplique a base.</li>
-          <li>Pinte com a cor desejada.</li>
-          <li>Finalize com top coat.</li>
-        </motion.ol>
+          <div className="step">
+            <div className="step-icon">🧼</div>
+            <h4>Passo 1</h4>
+            <p>Limpe as unhas com removedor de esmalte e água morna.</p>
+          </div>
+          <div className="step">
+            <div className="step-icon">🖌️</div>
+            <h4>Passo 2</h4>
+            <p>Aplique uma camada fina de base para proteger as unhas.</p>
+          </div>
+          <div className="step">
+            <div className="step-icon">🎨</div>
+            <h4>Passo 3</h4>
+            <p>Pinte com a cor desejada em movimentos suaves.</p>
+          </div>
+          <div className="step">
+            <div className="step-icon">✨</div>
+            <h4>Passo 4</h4>
+            <p>Finalize com top coat para brilho e durabilidade.</p>
+          </div>
+        </motion.div>
       </motion.section>
     </div>
   );
