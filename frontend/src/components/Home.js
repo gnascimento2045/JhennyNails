@@ -12,7 +12,15 @@ function Home() {
     const storedPortfolio = localStorage.getItem('portfolio');
     if (storedTitle) setTitle(storedTitle);
     if (storedDesc) setDescription(storedDesc);
-    if (storedPortfolio) setPortfolio(JSON.parse(storedPortfolio));
+    if (storedPortfolio) {
+      setPortfolio(JSON.parse(storedPortfolio));
+    } else {
+      // Load default portfolio from JSON
+      fetch('/portfolio/images.json')
+        .then(response => response.json())
+        .then(data => setPortfolio(data))
+        .catch(error => console.error('Error loading portfolio:', error));
+    }
   }, []);
 
   const handleOrder = () => {
