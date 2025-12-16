@@ -1,104 +1,152 @@
 .home {
-  font-family: 'Arial', sans-serif;
-  color: #333;
+  font-family: 'Poppins', sans-serif;
+  color: #4a4a4a;
 }
 
 .top-bar {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  background: linear-gradient(45deg, #9b59b6, #8e44ad);
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 15px 30px;
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
   z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
 .top-bar h1 {
   margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .whatsapp-btn {
-  background: #25d366;
+  background: linear-gradient(45deg, #25d366, #128c7e);
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 20px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
 }
 
 .whatsapp-btn:hover {
-  background: #128c7e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
 }
 
 .hero {
-  padding: 100px 20px 50px;
+  padding: 120px 30px 60px;
   text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #e1bee7 0%, #ba68c8 100%);
   color: white;
-  min-height: 50vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+  opacity: 0.1;
 }
 
 .hero h2 {
-  font-size: 2.5em;
+  font-size: 3em;
   margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  z-index: 1;
+  position: relative;
 }
 
 .hero p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
+  font-size: 1.3em;
+  margin-bottom: 40px;
+  font-weight: 300;
+  z-index: 1;
+  position: relative;
 }
 
 .cta-btn {
-  background: #ff6b6b;
+  background: linear-gradient(45deg, #ab47bc, #7b1fa2);
   color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 18px 35px;
   font-size: 18px;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(171, 71, 188, 0.4);
+  font-weight: 600;
+  z-index: 1;
+  position: relative;
 }
 
 .cta-btn:hover {
-  background: #ff5252;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(171, 71, 188, 0.6);
 }
 
 .portfolio {
-  padding: 50px 20px;
+  padding: 80px 30px;
   text-align: center;
+  background: white;
+  position: relative;
 }
 
 .portfolio h3 {
-  font-size: 2em;
-  margin-bottom: 30px;
+  font-size: 2.5em;
+  margin-bottom: 50px;
+  color: #7b1fa2;
+  font-weight: 600;
 }
 
 .carousel {
   display: flex;
   overflow: hidden;
-  gap: 20px;
-  animation: scroll 20s linear infinite;
+  gap: 30px;
+  animation: scroll 40s linear infinite;
+  padding: 20px 0;
 }
 
 .carousel-item {
   flex-shrink: 0;
-  width: 300px;
+  width: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
 }
 
 .carousel-item img {
   width: 100%;
-  height: 200px;
+  height: 240px;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.1);
 }
 
 @keyframes scroll {
@@ -111,23 +159,43 @@
 }
 
 .how-to {
-  padding: 50px 20px;
-  background: #f8f9fa;
+  padding: 80px 30px;
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
   text-align: center;
+  position: relative;
 }
 
 .how-to h3 {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #7b1fa2;
+  font-weight: 600;
+}
+
+.how-to p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #666;
 }
 
 .how-to ol {
   text-align: left;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   font-size: 1.1em;
+  color: #555;
+  line-height: 1.8;
 }
 
 .how-to li {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.how-to li::before {
+  content: '💅';
+  position: absolute;
+  left: 0;
+  color: #ab47bc;
 }
