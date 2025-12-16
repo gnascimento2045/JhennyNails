@@ -12,18 +12,13 @@ function Home() {
   useEffect(() => {
     const storedTitle = localStorage.getItem('title');
     const storedDesc = localStorage.getItem('description');
-    const storedPortfolio = localStorage.getItem('portfolio');
     if (storedTitle) setTitle(storedTitle);
     if (storedDesc) setDescription(storedDesc);
-    if (storedPortfolio) {
-      setPortfolio(JSON.parse(storedPortfolio));
-    } else {
-      // Load default portfolio from JSON
-      fetch('/portfolio/images.json')
-        .then(response => response.json())
-        .then(data => setPortfolio(data))
-        .catch(error => console.error('Error loading portfolio:', error));
-    }
+    // Always load portfolio from JSON for automatic loading
+    fetch('/portfolio/images.json')
+      .then(response => response.json())
+      .then(data => setPortfolio(data))
+      .catch(error => console.error('Error loading portfolio:', error));
   }, []);
 
   const particlesInit = async (engine) => {
