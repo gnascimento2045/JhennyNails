@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Particles from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
+import { MdSoap, MdBrush, MdPalette } from 'react-icons/md';
+import { BsStars } from 'react-icons/bs';
+import { Row, Col } from 'react-bootstrap';
 import './Home.css';
 
 function Home() {
   const [title, setTitle] = useState('Jhenny Nails - Beleza e Elegância');
   const [description, setDescription] = useState('Transforme suas unhas com designs únicos e profissionais.');
   const [portfolio, setPortfolio] = useState([]);
+  const [portfolioLoading, setPortfolioLoading] = useState(true);
 
   useEffect(() => {
     const storedTitle = localStorage.getItem('title');
     const storedDesc = localStorage.getItem('description');
+    const storedPortfolio = localStorage.getItem('portfolio');
     if (storedTitle) setTitle(storedTitle);
     if (storedDesc) setDescription(storedDesc);
-    // Always load portfolio from JSON for automatic loading
-    fetch('/portfolio/images.json')
-      .then(response => response.json())
-      .then(data => setPortfolio(data))
-      .catch(error => console.error('Error loading portfolio:', error));
     if (storedPortfolio) {
       setPortfolio(JSON.parse(storedPortfolio));
     } else {
@@ -215,39 +215,60 @@ function Home() {
         >
           Instruções simples para cuidar das suas unhas em casa.
         </motion.p>
-        <motion.div
-          className="steps-grid"
-        <motion.ol
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
-          <div className="step">
-            <div className="step-icon">🧼</div>
-            <h4>Passo 1</h4>
-            <p>Limpe as unhas com removedor de esmalte e água morna.</p>
-          </div>
-          <div className="step">
-            <div className="step-icon">🖌️</div>
-            <h4>Passo 2</h4>
-            <p>Aplique uma camada fina de base para proteger as unhas.</p>
-          </div>
-          <div className="step">
-            <div className="step-icon">🎨</div>
-            <h4>Passo 3</h4>
-            <p>Pinte com a cor desejada em movimentos suaves.</p>
-          </div>
-          <div className="step">
-            <div className="step-icon">✨</div>
-            <h4>Passo 4</h4>
-            <p>Finalize com top coat para brilho e durabilidade.</p>
-          </div>
-        </motion.div>
-          <li>Limpe as unhas.</li>
-          <li>Aplique a base.</li>
-          <li>Pinte com a cor desejada.</li>
-          <li>Finalize com top coat.</li>
-        </motion.ol>
+        <Row className="steps-grid">
+          <Col md={3} sm={6} className="mb-4">
+            <motion.div
+              className="step"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <MdSoap className="step-icon" />
+              <h4>Passo 1</h4>
+              <p>Limpe as unhas com removedor de esmalte e água morna.</p>
+            </motion.div>
+          </Col>
+          <Col md={3} sm={6} className="mb-4">
+            <motion.div
+              className="step"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <MdBrush className="step-icon" />
+              <h4>Passo 2</h4>
+              <p>Aplique uma camada fina de base para proteger as unhas.</p>
+            </motion.div>
+          </Col>
+          <Col md={3} sm={6} className="mb-4">
+            <motion.div
+              className="step"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <MdPalette className="step-icon" />
+              <h4>Passo 3</h4>
+              <p>Pinte com a cor desejada em movimentos suaves.</p>
+            </motion.div>
+          </Col>
+          <Col md={3} sm={6} className="mb-4">
+            <motion.div
+              className="step"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <BsStars className="step-icon" />
+              <h4>Passo 4</h4>
+              <p>Finalize com top coat para brilho e durabilidade.</p>
+            </motion.div>
+          </Col>
+        </Row>
       </motion.section>
     </div>
   );

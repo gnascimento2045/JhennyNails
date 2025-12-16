@@ -197,12 +197,6 @@
   transform: scale(1.1);
 }
 
-}
-
-.carousel-item:hover img {
-  transform: scale(1.1);
-}
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -233,10 +227,7 @@
 }
 
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -247,6 +238,9 @@
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 250px;
+  max-width: 300px;
+  min-width: 250px;
 }
 
 .step:hover {
@@ -275,15 +269,6 @@
   font-size: 1.2em;
   margin-bottom: 40px;
   color: #666;
-}
-
-.how-to ol {
-  text-align: left;
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1em;
-  color: #555;
-  line-height: 1.8;
 }
 
 .how-to li {
