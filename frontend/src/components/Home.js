@@ -43,12 +43,9 @@ function Home() {
       <section className="portfolio">
         <h3>Portfólio</h3>
         <div className="carousel">
-          {portfolio.map((item, index) => (
+          {[...portfolio, ...portfolio].map((item, index) => (
             <div key={index} className="carousel-item">
-              <img src={item.image} alt={item.title} />
-              <h4>{item.title}</h4>
-              <p>{item.description}</p>
-              <button onClick={handleOrder}>Interessada</button>
+              <img src={typeof item === 'string' ? item : item.image} alt={`Portfolio ${(index % portfolio.length) + 1}`} />
             </div>
           ))}
         </div>
