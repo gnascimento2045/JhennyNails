@@ -1,0 +1,12 @@
+[
+  {
+    "image": "/portfolio/image1.jpg",
+    "title": "Design 1",
+    "description": "Descrição do design 1"
+  },
+  {
+    "image": "/portfolio/image2.jpg",
+    "title": "Design 2",
+    "description": "Descrição do design 2"
+  }
+]
