@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Particles from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 import './Home.css';
 
 function Home() {
@@ -23,43 +26,202 @@ function Home() {
     }
   }, []);
 
+  const particlesInit = async (engine) => {
+    await loadSlim(engine);
+  };
+
+  const particlesOptions = {
+    background: {
+      color: {
+        value: "transparent",
+      },
+    },
+    fpsLimit: 120,
+    interactivity: {
+      events: {
+        onClick: {
+          enable: true,
+          mode: "push",
+        },
+        onHover: {
+          enable: true,
+          mode: "repulse",
+        },
+        resize: true,
+      },
+      modes: {
+        push: {
+          quantity: 4,
+        },
+        repulse: {
+          distance: 200,
+          duration: 0.4,
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: "#ab47bc",
+      },
+      links: {
+        color: "#ab47bc",
+        distance: 150,
+        enable: true,
+        opacity: 0.5,
+        width: 1,
+      },
+      collisions: {
+        enable: true,
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: {
+          default: "bounce",
+        },
+        random: false,
+        speed: 2,
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+          area: 800,
+        },
+        value: 80,
+      },
+      opacity: {
+        value: 0.5,
+      },
+      shape: {
+        type: "circle",
+      },
+      size: {
+        value: { min: 1, max: 5 },
+      },
+    },
+    detectRetina: true,
+  };
+
   const handleOrder = () => {
     window.open('https://wa.me/5561994018715?text=Oi%2C%20estou%20interessada...', '_blank');
   };
 
   return (
     <div className="home">
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={particlesOptions}
+        className="particles-background"
+      />
       <header className="top-bar">
-        <h1>Jhenny Nails</h1>
-        <button className="whatsapp-btn" onClick={handleOrder}>
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Jhenny Nails
+        </motion.h1>
+        <motion.button
+          className="whatsapp-btn"
+          onClick={handleOrder}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           📱 WhatsApp
-        </button>
+        </motion.button>
       </header>
-      <section className="hero">
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <button className="cta-btn" onClick={handleOrder}>Peça agora a sua</button>
-      </section>
-      <section className="portfolio">
-        <h3>Portfólio</h3>
+      <motion.section
+        className="hero"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          {title}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.7 }}
+        >
+          {description}
+        </motion.p>
+        <motion.button
+          className="cta-btn"
+          onClick={handleOrder}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Peça agora a sua
+        </motion.button>
+      </motion.section>
+      <motion.section
+        className="portfolio"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <motion.h3
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          Portfólio
+        </motion.h3>
         <div className="carousel">
           {[...portfolio, ...portfolio, ...portfolio, ...portfolio].map((item, index) => (
-            <div key={index} className="carousel-item">
+            <motion.div
+              key={index}
+              className="carousel-item"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
               <img src={typeof item === 'string' ? item : item.image} alt={`Portfolio ${(index % portfolio.length) + 1}`} />
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
-      <section className="how-to">
-        <h3>Como Aplicar</h3>
-        <p>Instruções simples para cuidar das suas unhas em casa.</p>
-        <ol>
+      </motion.section>
+      <motion.section
+        className="how-to"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <motion.h3
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          Como Aplicar
+        </motion.h3>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          Instruções simples para cuidar das suas unhas em casa.
+        </motion.p>
+        <motion.ol
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
           <li>Limpe as unhas.</li>
           <li>Aplique a base.</li>
           <li>Pinte com a cor desejada.</li>
           <li>Finalize com top coat.</li>
-        </ol>
-      </section>
+        </motion.ol>
+      </motion.section>
     </div>
   );
 }
