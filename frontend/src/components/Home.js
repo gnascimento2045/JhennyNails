@@ -16,18 +16,30 @@ function Home() {
   useEffect(() => {
     const storedTitle = localStorage.getItem('title');
     const storedDesc = localStorage.getItem('description');
-    const storedPortfolio = localStorage.getItem('portfolio');
     if (storedTitle) setTitle(storedTitle);
     if (storedDesc) setDescription(storedDesc);
-    if (storedPortfolio) {
-      setPortfolio(JSON.parse(storedPortfolio));
-    } else {
-      // Load default portfolio from JSON
-      fetch('/portfolio/images.json')
-        .then(response => response.json())
-        .then(data => setPortfolio(data))
-        .catch(error => console.error('Error loading portfolio:', error));
-    }
+    // Always load portfolio from JSON
+    console.log('Fetching portfolio from /portfolio/images.json');
+    fetch('/portfolio/images.json')
+      .then(response => {
+        console.log('Response status:', response.status);
+        return response.json();
+      })
+      .then(data => {
+        console.log('Portfolio data loaded:', data);
+        setPortfolio(data);
+        setPortfolioLoading(false);
+        localStorage.setItem('portfolio', JSON.stringify(data));
+      })
+      .catch(error => {
+        console.error('Error loading portfolio:', error);
+        const storedPortfolio = localStorage.getItem('portfolio');
+        if (storedPortfolio) {
+          console.log('Using stored portfolio');
+          setPortfolio(JSON.parse(storedPortfolio));
+        }
+        setPortfolioLoading(false);
+      });
   }, []);
 
   const particlesInit = async (engine) => {
@@ -179,20 +191,32 @@ function Home() {
         >
           Portfólio
         </motion.h3>
-        <div className="carousel">
-          {[...portfolio, ...portfolio, ...portfolio, ...portfolio].map((item, index) => (
-            <motion.div
-              key={index}
-              className="carousel-item"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <img src={typeof item === 'string' ? item : item.image} alt={`Portfolio ${(index % portfolio.length) + 1}`} />
-            </motion.div>
-          ))}
-        </div>
+        {portfolioLoading ? (
+          <p>Carregando portfólio...</p>
+        ) : portfolio.length === 0 ? (
+          <p>Nenhuma imagem no portfólio.</p>
+        ) : (
+          <div className="carousel">
+            {console.log('Rendering carousel with', portfolio.length, 'images')}
+            {[...portfolio, ...portfolio, ...portfolio, ...portfolio].map((item, index) => (
+              <motion.div
+                key={index}
+                className="carousel-item"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <img 
+                  src={encodeURI(typeof item === 'string' ? item : item.image)} 
+                  alt={`Portfolio ${(index % portfolio.length) + 1}`} 
+                  onLoad={() => console.log('Image loaded:', item)}
+                  onError={() => console.error('Image failed to load:', item)}
+                />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </motion.section>
       <motion.section
         className="how-to"
