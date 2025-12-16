@@ -197,6 +197,12 @@
   transform: scale(1.1);
 }
 
+}
+
+.carousel-item:hover img {
+  transform: scale(1.1);
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -218,6 +224,51 @@
   margin-bottom: 30px;
   color: #7b1fa2;
   font-weight: 600;
+}
+
+.how-to p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.step-icon {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.step h4 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #7b1fa2;
+  font-weight: 600;
+}
+
+.step p {
+  color: #555;
+  line-height: 1.6;
 }
 
 .how-to p {
