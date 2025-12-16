@@ -19,14 +19,9 @@ function Home() {
     if (storedTitle) setTitle(storedTitle);
     if (storedDesc) setDescription(storedDesc);
     // Always load portfolio from JSON
-    console.log('Fetching portfolio from /portfolio/images.json');
     fetch('/portfolio/images.json')
-      .then(response => {
-        console.log('Response status:', response.status);
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-        console.log('Portfolio data loaded:', data);
         setPortfolio(data);
         setPortfolioLoading(false);
         localStorage.setItem('portfolio', JSON.stringify(data));
@@ -35,7 +30,6 @@ function Home() {
         console.error('Error loading portfolio:', error);
         const storedPortfolio = localStorage.getItem('portfolio');
         if (storedPortfolio) {
-          console.log('Using stored portfolio');
           setPortfolio(JSON.parse(storedPortfolio));
         }
         setPortfolioLoading(false);
@@ -197,7 +191,6 @@ function Home() {
           <p>Nenhuma imagem no portfólio.</p>
         ) : (
           <div className="carousel">
-            {console.log('Rendering carousel with', portfolio.length, 'images')}
             {[...portfolio, ...portfolio, ...portfolio, ...portfolio].map((item, index) => (
               <motion.div
                 key={index}
@@ -210,8 +203,6 @@ function Home() {
                 <img 
                   src={encodeURI(typeof item === 'string' ? item : item.image)} 
                   alt={`Portfolio ${(index % portfolio.length) + 1}`} 
-                  onLoad={() => console.log('Image loaded:', item)}
-                  onError={() => console.error('Image failed to load:', item)}
                 />
               </motion.div>
             ))}
